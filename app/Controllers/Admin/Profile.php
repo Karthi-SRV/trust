@@ -64,24 +64,43 @@ class Profile extends BackendController
     public function index()
     {
         $user = Auth::user();
-
+        $isAdmin = false;
         if($user->group_account_id) {
             // $group_account = GroupAccountToApprovedCustomerUser::where('group_account_id','=', $user->group_account_id)->get();
             $groupData =  DB::table('group_account_to_approved_customer_users')
                 ->join('users', 'group_account_to_approved_customer_users.customer_id', '=', 'users.id')
                 ->where('group_account_to_approved_customer_users.group_account_id','=',$user->group_account_id)
                 ->get();
+
+            $admin = DB::table('group_account_to_approved_customer_users')
+                                    ->where('group_account_id','=', $user->group_account_id)
+                                     ->Where('customer_id', $user->id)
+                                     ->pluck('admin');
+            if($admin) 
+                $isAdmin = true;
         } else {
+            
             $userGroupAccountId =  DB::table('group_account_to_approved_customer_users')
                                     ->where('customer_id','=', $user->id)->pluck('group_account_id');
+            
+            User::where('id', '=', $user->id)->update(array('group_account_id' => $userGroupAccountId));
+            
             $groupData =  DB::table('group_account_to_approved_customer_users')
                 ->join('users', 'group_account_to_approved_customer_users.customer_id', '=', 'users.id')
                 ->where('group_account_to_approved_customer_users.group_account_id','=',$userGroupAccountId)
                 ->get();
+
+            $admin = DB::table('group_account_to_approved_customer_users')
+                                    ->where('group_account_id','=', $user->group_account_id)
+                                     ->Where('customer_id', $user->id)
+                                     ->pluck('admin');
+            if($admin) 
+                $isAdmin = true;
         }
         return $this->getView()
             ->shares('title',  __d('system', 'User Profile'))
             ->with('user', $user)
+            ->with('isAdmin', $isAdmin)
             ->with('groupData', $groupData);
     }
 
@@ -117,4 +136,8 @@ class Profile extends BackendController
         return Redirect::back()->withStatus($status, 'danger');
     }
 
+    public function validateEmail() {
+        $input = Input::only('group_account_id', 'email');
+        pr($input);exit;
+    }
 }
