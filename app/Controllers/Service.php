@@ -8,6 +8,8 @@ use App\Core\Controller;
 
 use View;
 
+use DB;
+
 class Service extends Controller
 {
 	
@@ -16,9 +18,24 @@ class Service extends Controller
 	*/
 	public function fetch()
 	{
+		$countform =  DB::table('forms_details')->count();
+		$forms = DB::table('forms_details')->get();
 		# code...
 		return View::make('Welcome/Service')
-            ->shares('title', __('Service'));
+            ->shares('title', __('Service'))
+            ->shares('countform',$countform)
+            ->shares('forms',$forms);
+	}
+	public function fetchme($code)
+	{
+		# connect to the database 
+
+		$codes = $code;
+		return View::make('Welcome/Form')
+            ->shares('title', __('Form'))
+            ->shares('countform',$codes);
+
+		
 	}
 }
 ?>

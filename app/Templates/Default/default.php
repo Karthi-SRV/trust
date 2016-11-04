@@ -49,7 +49,7 @@ echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
             </div>
             <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
                 <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                    <a class="mdl-navigation__link is-active" href='<?= site_url(); ?>'>Portfolio</a>
+                    <a class="mdl-navigation__link" href='<?= site_url(); ?>'>Portfolio</a>
                     <a class="mdl-navigation__link" href='<?= site_url('subpage'); ?>'>Blog</a>
                     <a class="mdl-navigation__link" href="about.html">About</a>
                     <a class="mdl-navigation__link" href="contact.html">Contact</a>
@@ -65,6 +65,7 @@ echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
             </nav>
         </div>
 <main class="mdl-layout__content">
+
 <?= isset($afterBody) ? $afterBody : ''; // Place to pass data / plugable hook zone ?>
 
 

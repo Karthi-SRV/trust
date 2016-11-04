@@ -1,7 +1,6 @@
 .portfolio-header {
   position: relative;
   background-image: url(images/header-bg.jpg);
-  background-color: #2196F3;
 }
 
 .portfolio-header .mdl-layout__header-row {
@@ -10,9 +9,7 @@
       -ms-flex-pack: center;
           justify-content: center;
 }
-.portfolio-header-row {
-  min-height: 100px;
-}
+
 .mdl-layout__title {
   font-size: 14px;
   text-align: center;
@@ -62,12 +59,10 @@
       -ms-flex: 1;
           flex: 1;
   line-height: 42px;
-  color: #FFFFFF;
 }
 
 .portfolio-header .mdl-layout__drawer-button {
     background-color: rgba(197, 197, 197, 0.44);
-
 }
 
 .portfolio-navigation-row .is-active {
@@ -89,7 +84,6 @@
 
 .portfolio-card .mdl-card__title {
   padding-bottom: 0;
-
 }
 
 .portfolio-blog-card-full-bg {
@@ -116,15 +110,11 @@
 
 img.article-image {
   width: 100%;
-  height: auto;
+  height: 170px;
 }
 
 .portfolio-max-width {
-  max-width: 1900px;
-  margin: auto;
-}
-.portfoli-max-width {
-  max-width: 90%;
+  max-width: 900px;
   margin: auto;
 }
 
@@ -153,10 +143,7 @@ img.article-image {
   float: right;
   top: -4px;
 }
-.mdl-cell{
-  width: 100px;
-  height: 50px;
-}
+
 .demo-card-event > .mdl-card__actions {
     -webkit-align-items: center;
         -ms-flex-align: center;
@@ -180,6 +167,7 @@ footer {
   background-image: url(images/footer-background.png);
   background-size: cover;
 }
+
 
 .mdl-dialog {
   border: none;
