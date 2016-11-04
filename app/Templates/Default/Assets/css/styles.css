@@ -11,9 +11,10 @@
 }
 
 .mdl-layout__title {
-  font-size: 14px;
+  font-size: 24px;
   text-align: center;
-  font-weight: 300;
+  font-weight: 800;
+  color: white;
 }
 
 .is-compact .mdl-layout__title span {

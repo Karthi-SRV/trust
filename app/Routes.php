@@ -62,7 +62,7 @@ Route::group(array('prefix' => '', 'namespace' => 'App\Controllers'), function()
 Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin'), function() {
     // The Account Registration.
     Route::get('family', array('before' => 'auth',  'uses' => 'Family@index'));
-    
+    Route::get('myprofile', array('before' => 'auth',  'uses' => 'My@index'));
     
 });
 //Family Router
@@ -108,8 +108,9 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'App\Modules\Files\Contro
 Route::group(array('prefix' => '', 'namespace' => 'App\Controllers'), function() {
     //index page
     Route::get( '/',  array('before' => 'guest', 'uses' => 'Welcome@index'));
-    Route::get( 'subpage',  array('before' => 'guest', 'uses' => 'Welcome@subPage'));
+    Route::get( 'about',  array('before' => 'guest', 'uses' => 'Welcome@subPage'));
     Route::get( 'service',  array('before' => 'guest', 'uses' => 'Service@fetch'));
+    Route::get( 'contact',  array('before' => 'guest', 'uses' => 'Welcome@contact'));
     Route::get( 'service/{code}',  array('before' => 'auth','uses' =>  'Service@fetchme'));
 });
 

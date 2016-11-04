@@ -392,6 +392,7 @@
             <div class="form-group">
                 <label class="col-sm-4 control-label" for="name"><?= __d('system', 'Town/Suburb'); ?> <font color='#CC0000'>*</font></label>
                 <div class="col-sm-8">
+                <input name="Town" id="town" type="text" class="form-control" value="" placeholder="<?= __d('system', 'town'); ?>">
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -399,7 +400,7 @@
             <div class="form-group">
                 <label class="col-sm-4 control-label" for="name"><?= __d('system', 'State'); ?> <font color='#CC0000'>*</font></label>
                 <div class="col-sm-8">
-                    <input name="State" id="State" type="password" class="form-control" value="" placeholder="<?= __d('system', 'State'); ?>">
+                    <input name="State" id="State" type="text" class="form-control" value="" placeholder="<?= __d('system', 'State'); ?>">
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -407,7 +408,7 @@
             <div class="form-group">
                 <label class="col-sm-4 control-label" for="name"><?= __d('system', 'Postcode'); ?> <font color='#CC0000'>*</font></label>
                 <div class="col-sm-8">
-                    <input name="Postcode" id="Postcode" type="password" class="form-control" value="" placeholder="<?= __d('system', 'Postcode'); ?>">
+                    <input name="Postcode" id="Postcode" type="text" class="form-control" value="" placeholder="<?= __d('system', 'Postcode'); ?>">
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -415,7 +416,7 @@
             <div class="form-group">
                 <label class="col-sm-4 control-label" for="name"><?= __d('system', 'Phone'); ?> <font color='#CC0000'>*</font></label>
                 <div class="col-sm-8">
-                    <input name="password_confirmation" id="password_confirmation" type="password" class="form-control" value="" placeholder="<?= __d('system', 'Phone'); ?>">
+                    <input name="password_confirmation" id="password_confirmation" type="text" class="form-control" value="" placeholder="<?= __d('system', 'Phone'); ?>">
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -429,7 +430,7 @@
             </div>
             <br>
 
-            <input type="hidden" name="csrfToken" value="<?= $csrfToken; ?>" />
+            <input type="hidden" name="csrfToken1" value="<?= $csrfToken; ?>" />
 
             </form>
         </div>
