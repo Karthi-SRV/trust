@@ -35,17 +35,19 @@ Route::group(array('prefix' => '', 'namespace' => 'App\Controllers'), function()
 
 // The Adminstration Routes.
 Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin'), function() {
+    
+    //Route::get('family',   array('before' => 'auth', 'uses' => 'Family@index'));
     // The User's Dashboard.
-    Route::get('/',         array('before' => 'auth', 'uses' => 'Dashboard@index'));
-    Route::get('dashboard', array('before' => 'auth', 'uses' => 'Dashboard@index'));
+     Route::get('/',         array('before' => 'auth', 'uses' => 'Dashboard@index'));
+     Route::get('dashboard', array('before' => 'auth', 'uses' => 'Dashboard@index'));
 
-    // The User's Profile.
-    Route::get( 'profile', array('before' => 'auth',      'uses' => 'Profile@index'));
-    Route::post('profile', array('before' => 'auth|csrf', 'uses' => 'Profile@update'));
+    // // The User's Profile.
+     Route::get( 'profile', array('before' => 'auth',      'uses' => 'Profile@index'));
+     Route::post('profile', array('before' => 'auth|csrf', 'uses' => 'Profile@update'));
 
-    // The Site Settings.
-    Route::get( 'settings', array('before' => 'auth',      'uses' => 'Settings@index'));
-    Route::post('settings', array('before' => 'auth|csrf', 'uses' => 'Settings@store'));
+    // // The Site Settings.
+     Route::get( 'settings', array('before' => 'auth',      'uses' => 'Settings@index'));
+     Route::post('settings', array('before' => 'auth|csrf', 'uses' => 'Settings@store'));
 });
 
 
@@ -56,6 +58,14 @@ Route::group(array('prefix' => '', 'namespace' => 'App\Controllers'), function()
     Route::get( 'register/verify/{token?}', array('before' => 'guest',      'uses' => 'Registrar@verify'));
     Route::get( 'register/status',          array('before' => 'guest',      'uses' => 'Registrar@status'));
 });
+//family router setup
+Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin'), function() {
+    // The Account Registration.
+    Route::get('family', array('before' => 'auth',  'uses' => 'Family@index'));
+    
+    
+});
+//Family Router
 
 // The Adminstration Routes.
 Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin'), function() {
@@ -95,9 +105,20 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'App\Modules\Files\Contro
 });
 
 // The default Routing
-Route::get('/',       'App\Controllers\Welcome@index');
-Route::get('subpage', 'App\Controllers\Welcome@subPage');
-Route::get('service', 'App\Controllers\Service@fetch');
+Route::group(array('prefix' => '', 'namespace' => 'App\Controllers'), function() {
+    //index page
+    Route::get( '/',  array('before' => 'guest', 'uses' => 'Welcome@index'));
+    Route::get( 'subpage',  array('before' => 'guest', 'uses' => 'Welcome@subPage'));
+    Route::get( 'service',  array('before' => 'guest', 'uses' => 'Service@fetch'));
+    Route::get( 'service/{code}',  array('before' => 'auth','uses' =>  'Service@fetchme'));
+});
+
+
+
+//Route::get('/',       'App\Controllers\Welcome@index');
+//Route::get('subpage', 'App\Controllers\Welcome@subPage');
+//Route::get('service', 'App\Controllers\Service@fetch');
+//Route::get('service/{code}', 'App\Controllers\Service@fetchme');
 
 
 /** End default Routes */
