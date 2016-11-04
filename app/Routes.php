@@ -35,7 +35,7 @@ Route::group(array('prefix' => '', 'namespace' => 'App\Controllers'), function()
 
 // The Adminstration Routes.
 Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin'), function() {
-    
+
     //Route::get('family',   array('before' => 'auth', 'uses' => 'Family@index'));
     // The User's Dashboard.
      Route::get('/',         array('before' => 'auth', 'uses' => 'Dashboard@index'));
@@ -70,6 +70,7 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin'),
 // The Adminstration Routes.
 Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin'), function() {
     // The Users CRUD.
+    Route::get('forms/create',  array('before' => 'auth','uses' => 'Forms@create'));
     Route::get( 'users',              array('before' => 'auth',      'uses' => 'Users@index'));
     Route::get( 'users/create',       array('before' => 'auth',      'uses' => 'Users@create'));
     Route::post('users',              array('before' => 'auth|csrf', 'uses' => 'Users@store'));
@@ -78,6 +79,9 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin'),
     Route::post('users/{id}', 
             array('before' => 'auth|csrf', 'uses' => 'Users@update'));
     Route::post('users/{id}/destroy', array('before' => 'auth|csrf', 'uses' => 'Users@destroy'));
+
+    Route::get('forms/{id}',    array('before' => 'auth',      'uses' => 'Forms@show'));
+    Route::post('forms/{id}/destroy', array('before' => 'auth|csrf', 'uses' => 'Forms@destroy'));
 
     // The Users Search.
     Route::post( 'users/search', array('before' => 'auth', 'uses' => 'Users@search'));

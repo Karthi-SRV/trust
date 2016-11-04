@@ -29,7 +29,7 @@ class Dashboard extends BackendController
                                      ->pluck('id');
 			// pr($group_accounts);exit; 
         }
-        $forms = Form::all();
+        $forms = Form::where('deleted', '=', null)->get();;
         return $this->getView()
             ->shares('title', __d('system', 'Dashboard'))
             ->with('forms', $forms)
