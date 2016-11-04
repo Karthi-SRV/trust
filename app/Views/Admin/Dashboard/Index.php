@@ -15,33 +15,92 @@
         <div class="box-tools">
         </div>
     </div>
+    <br>
+    <br>
+
     <div class="box-body no-padding">
-        <div class="col-md-4">
+        
+        <?php if($user->id != 5){?>
+        <div class="col-md-6">
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="form-group">
-                <label for="inputFinancialYear" class="col-sm-4 control-label">Account:</label>
+                <label for="inputFinancialYear" class="col-sm-4 control-label" style="text-align: right;">Account:</label>
                 <div class="col-sm-8">
                     <select name="role" id="role" class="form-control select2">
+                        <option >-- Select -- </option>
+                        <option value="1">1 - Cochin</option>
+                        <option value="2">2 - Ernakulam </option>
+                        <option value="3">3 - Irinjalakuda</option>
+                        <option value="4">4 - Kotta</option>
                     </select>
                 </div>
             </div>
         </div>
-<br>
-<br>
-        <div class="col-md-4">
+        <br>
+        <br>
+        <?php }?>
+
+        <?php if($user->id == 1){?>
+        <div class="col-md-6">
         </div>
-        <div class="col-md-8">
+        <div class="col-md-6">
             <div class="form-group">
-                <label for="inputFinancialYear" class="col-sm-4 control-label">Type:</label>
+                <label for="inputFinancialYear" class="col-sm-4 control-label" style="text-align: right;">Department:</label>
                 <div class="col-sm-8">
                     <select name="role" id="role" class="form-control select2">
+                        <option > -- Select -- </option>
+                        <option value="1">1 - Transport </option>
+                        <option value="2">2 - Panjayath </option>
+                        <option value="3">3 - Vigilance </option>
                     </select>
                 </div>
             </div>
         </div>
-<br>
-<br>
+        <br>
+        <br>
+        <?php }?>
+
+        <?php if($user->id == 5){?>
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputFinancialYear" class="col-sm-4 control-label" style="text-align: right;">Family Member:</label>
+                <div class="col-sm-8">
+                    <select name="role" id="role" class="form-control select2">
+                        <option > -- Select -- </option>
+                        <option value="1">1 - XXX </option>
+                        <option value="2">2 - YYY </option>
+                        <option value="3">3 - ZZZ </option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <?php }?>
+
+        <?php if($user->id != 5){?>
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputFinancialYear" class="col-sm-4 control-label" style="text-align: right;">Type:</label>
+                <div class="col-sm-8">
+                     <select name="role" id="role" class="form-control select2">
+                        <option> -- Select -- </option>
+                        <option value="1">1 - Transport 1</option>
+                        <option value="2">2 - Transport 2</option>
+                        <option value="3">3 - Transport 3</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <?php }?>
+
         <table id='left' class='table table-striped table-hover responsive'>
             <thead>
                 <tr class="bg-navy disabled">
