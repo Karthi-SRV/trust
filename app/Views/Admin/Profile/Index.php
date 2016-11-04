@@ -356,6 +356,85 @@
     </div>
 </div>
 
+<div  class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title"><?= __d('system', 'Account Contact Information'); ?></h3>
+    </div>
+
+    <div class="box-body">
+        <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
+            <form method='post' role="form">
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="name"><?= __d('system', 'Account Name'); ?> <font color='#CC0000'>*</font></label>
+                <div class="col-sm-8">
+                    <input name="account_name" id="account_name" type="text" class="form-control" value="" placeholder="<?= __d('system', 'Account Name'); ?>">
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="name"><?= __d('system', 'Postal Address Line 1'); ?> <font color='#CC0000'>*</font></label>
+                <div class="col-sm-8">
+                    <input name="postal_address_1" id="postal_address_1" type="text" class="form-control" value="" placeholder="<?= __d('system', 'Postal Address Line 1'); ?>">
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="name"><?= __d('system', 'Postal Address Line 2 '); ?> <font color='#CC0000'></font></label>
+                <div class="col-sm-8">
+                    <input name="postal_address_2" id="postal_address_2" type="text" class="form-control" value="" placeholder="<?= __d('system', 'Postal Address Line 2'); ?>">
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="name"><?= __d('system', 'Town/Suburb'); ?> <font color='#CC0000'>*</font></label>
+                <div class="col-sm-8">
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="name"><?= __d('system', 'State'); ?> <font color='#CC0000'>*</font></label>
+                <div class="col-sm-8">
+                    <input name="State" id="State" type="password" class="form-control" value="" placeholder="<?= __d('system', 'State'); ?>">
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="name"><?= __d('system', 'Postcode'); ?> <font color='#CC0000'>*</font></label>
+                <div class="col-sm-8">
+                    <input name="Postcode" id="Postcode" type="password" class="form-control" value="" placeholder="<?= __d('system', 'Postcode'); ?>">
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="name"><?= __d('system', 'Phone'); ?> <font color='#CC0000'>*</font></label>
+                <div class="col-sm-8">
+                    <input name="password_confirmation" id="password_confirmation" type="password" class="form-control" value="" placeholder="<?= __d('system', 'Phone'); ?>">
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <br>
+            <font color='#CC0000'>*</font><?= __d('system', 'Required field'); ?>
+            <hr>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                    <input type="submit" name="submit" class="btn btn-success col-sm-3 pull-right" value="<?= __d('system', 'Save'); ?>">
+                </div>
+            </div>
+            <br>
+
+            <input type="hidden" name="csrfToken" value="<?= $csrfToken; ?>" />
+
+            </form>
+        </div>
+    </div>
+</div>
 </section>
 <?php 
 Assets::js([
