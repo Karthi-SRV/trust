@@ -11,77 +11,98 @@ $languages = Config::get('languages');
 //
 ob_start();
 
-foreach ($languages as $code => $info) {
-?>
-<li <?php if($language == $code) echo 'class="active"'; ?>>
-    <a href='<?= site_url('language/' .$code); ?>' title='<?= $info['info']; ?>'><?= $info['name']; ?></a>
-</li>
-<?php
-}
+
 
 $langMenuLinks = ob_get_clean();
 ?>
 <!DOCTYPE html>
 <html lang="<?= $language; ?>">
 <head>
-    <meta charset="utf-8">
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Goverment Web App">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <title><?= $title .' - ' .Config::get('app.name', SITETITLE); ?></title>
+
 <?php
 echo isset($meta) ? $meta : ''; // Place to pass data / plugable hook zone
 
 Assets::css([
-    site_url('vendor/twbs/bootstrap/dist/css/bootstrap.min.css'),
-    site_url('vendor/twbs/bootstrap/dist/css/bootstrap-theme.min.css'),
-    'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css',
-    template_url('css/style.css', 'Default'),
+    "https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en",
+    "https://code.getmdl.io/1.2.1/material.grey-pink.min.css",
+    template_url('css/styles.css', 'Default'),
+    "https://fonts.googleapis.com/icon?family=Material+Icons",
+        
 ]);
 
 echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
 ?>
 </head>
-<body style='padding-top: 28px;'>
-
-<nav class="navbar navbar-default navbar-xs navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                <?= $langMenuLinks; ?>
-            </ul>
+<body>
+  <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
+            <div class="mdl-layout__header-row portfolio-header-row">
+                <span class="mdl-layout__title">
+                    <div class="portfolio-logo"></div>
+                    <span class="mdl-layout__title">Simple portfolio website</span>
+                </span>
+            </div>
+            <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
+                <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+                    <a class="mdl-navigation__link is-active" href='<?= site_url(); ?>'>Portfolio</a>
+                    <a class="mdl-navigation__link" href='<?= site_url('subpage'); ?>'>Blog</a>
+                    <a class="mdl-navigation__link" href="about.html">About</a>
+                    <a class="mdl-navigation__link" href="contact.html">Contact</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer mdl-layout--small-screen-only">
+            <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
+                <a class="mdl-navigation__link is-active" href="index.html">Portfolio</a>
+                <a class="mdl-navigation__link" href="blog.html">Blog</a>
+                <a class="mdl-navigation__link" href="about.html">About</a>
+                <a class="mdl-navigation__link" href="contact.html">Contact</a>
+            </nav>
         </div>
-    </div>
-</nav>
-
+<main class="mdl-layout__content">
 <?= isset($afterBody) ? $afterBody : ''; // Place to pass data / plugable hook zone ?>
 
-<div class="container">
-    <p>
-        <img src='<?= template_url('images/nova.png', 'Default'); ?>' alt='<?= Config::get('app.name', SITETITLE); ?>'>
-    </p>
+
 
     <?= $content; ?>
-</div>
 
-<footer class="footer">
-    <div class="container-fluid">
-        <div class="row" style="margin: 15px 0 0;">
-            <div class="col-lg-4">
-                <p class="text-muted">Copyright &copy; <?php echo date('Y'); ?> <a href="http://www.novaframework.com/" target="_blank"><b>Nova Framework <?= VERSION; ?></b></a></p>
-            </div>
-            <div class="col-lg-8">
-                <p class="text-muted pull-right">
+    
+
+                
+<!-- Footer and other content-->
+<footer class="mdl-mini-footer">
+                <div class="mdl-mini-footer__left-section">
+                    <div class="mdl-logo"><span> &copy; <?php echo date('Y'); ?> , All Rights Reserved by Goverment.
+                                    </span> </div>
+                                    <p>Developed By pettaCode.com</p>
+                    <ul class="mdl-mini-footer__link-list">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Privacy & Terms</a></li>
+                    </ul>
+                </div>
+                <div class="mdl-mini-footer__right-section">
+                    <p class="text-muted pull-right">
                     <?php if(Config::get('app.debug')) { ?>
                     <small><!-- DO NOT DELETE! - Profiler --></small>
                     <?php } ?>
                 </p>
-            </div>
+                </div>
+
+            </footer>
+        </main>
+<!-- Footer and other content End Here -->
+
         </div>
-    </div>
-</footer>
 
 <?php
 Assets::js([
-    'https://code.jquery.com/jquery-1.12.4.min.js',
-    site_url('vendor/twbs/bootstrap/dist/js/bootstrap.min.js'),
+    "https://code.getmdl.io/1.2.1/material.min.js",
+    template_url('js/main.js', 'Default'),
 ]);
 
 echo isset($js) ? $js : ''; // Place to pass data / plugable hook zone

@@ -44,5 +44,14 @@ This content can be changed in <code>/app/Views/Welcome/SubPage.php</code>');
             ->shares('title', __('Subpage'))
             ->withWelcomeMessage($message);
     }
+    public function service()
+    {
+        $message = __('Hello, welcome from the welcome controller and subpage method! <br/>
+This content can be changed in <code>/app/Views/Welcome/SubPage.php</code>');
+
+        return $this->getView()
+            ->shares('title', __('Subpage'))
+            ->withWelcomeMessage($message);
+    }
 
 }

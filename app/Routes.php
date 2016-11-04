@@ -97,5 +97,7 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'App\Modules\Files\Contro
 // The default Routing
 Route::get('/',       'App\Controllers\Welcome@index');
 Route::get('subpage', 'App\Controllers\Welcome@subPage');
+Route::get('service', 'App\Controllers\Service@fetch');
+
 
 /** End default Routes */
