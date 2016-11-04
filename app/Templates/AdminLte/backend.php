@@ -163,11 +163,23 @@ $langMenuLinks = ob_get_clean();
             <li <?php if ($baseUri == 'admin/dashboard') { echo "class='active'"; } ?>>
                 <a href="<?= site_url('admin/dashboard'); ?>"><i class="fa fa-dashboard"></i> <span><?= __d('admin_lte', 'Dashboard'); ?></span></a>
             </li>
-            <?php if ($user->hasRole('user')) { ?>
+            
+            <?php if ($user->role_id != 1)
+             { 
+              ?>
                 <li <?php if ($baseUri == 'admin/family') { echo "class='active'"; } ?>>
                 <a href="<?= site_url('admin/family'); ?>"><i class="fa fa-gears"></i> <span><?= __d('admin_lte', 'Family'); ?></span></a>
             </li>
-            <?php } ?>
+            <li <?php if ($baseUri == 'admin/profile') { echo "class='active'"; } ?>>
+                <a href="<?= site_url('admin/profile'); ?>"><i class="fa fa-users"></i> <span><?= __d('admin_lte', 'profile'); ?></span></a>
+            </li>
+            <li <?php if ($baseUri == 'admin/myprofile') { echo "class='active'"; } ?>>
+                <a href="<?= site_url('admin/myprofile'); ?>"><i class="fa fa-users"></i> <span><?= __d('admin_lte', 'My Profile'); ?></span></a>
+            </li>
+            <?php 
+          } 
+
+           ?>
 
             <?php if ($user->hasRole('administrator')) { ?>
             

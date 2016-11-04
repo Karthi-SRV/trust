@@ -43,25 +43,25 @@ echo isset($css) ? $css : ''; // Place to pass data / plugable hook zone
         <header class="mdl-layout__header mdl-layout__header--waterfall portfolio-header">
             <div class="mdl-layout__header-row portfolio-header-row">
                 <span class="mdl-layout__title">
-                    <div class="portfolio-logo"></div>
-                    <span class="mdl-layout__title">Simple portfolio website</span>
+                    
+                    <span class="mdl-layout__title">Simple Goverment Portal</span>
                 </span>
             </div>
             <div class="mdl-layout__header-row portfolio-navigation-row mdl-layout--large-screen-only">
                 <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                    <a class="mdl-navigation__link" href='<?= site_url(); ?>'>Portfolio</a>
-                    <a class="mdl-navigation__link" href='<?= site_url('subpage'); ?>'>Blog</a>
-                    <a class="mdl-navigation__link" href="about.html">About</a>
-                    <a class="mdl-navigation__link" href="contact.html">Contact</a>
+                    <a class="mdl-navigation__link" href='<?= site_url(); ?>' style="color: #ffffff;">Home</a>
+                    <a class="mdl-navigation__link" href='<?= site_url('service'); ?>' style="color: #ffffff;">Service</a>
+                    <a class="mdl-navigation__link" href='<?= site_url('about'); ?>' style="color: #ffffff;">About</a>
+                    <a class="mdl-navigation__link" href='<?= site_url('contact'); ?>' style="color: #ffffff;">Contact</a>
                 </nav>
             </div>
         </header>
         <div class="mdl-layout__drawer mdl-layout--small-screen-only">
             <nav class="mdl-navigation mdl-typography--body-1-force-preferred-font">
-                <a class="mdl-navigation__link is-active" href="index.html">Portfolio</a>
-                <a class="mdl-navigation__link" href="blog.html">Blog</a>
-                <a class="mdl-navigation__link" href="about.html">About</a>
-                <a class="mdl-navigation__link" href="contact.html">Contact</a>
+                <a class="mdl-navigation__link is-active" href='<?= site_url(); ?>'>Home</a>
+                <a class="mdl-navigation__link" href='<?= site_url('service'); ?>'>Service</a>
+                <a class="mdl-navigation__link" href='<?= site_url('about'); ?>'>About</a>
+                <a class="mdl-navigation__link" href='<?= site_url('contact'); ?>'>Contact</a>
             </nav>
         </div>
 <main class="mdl-layout__content">
