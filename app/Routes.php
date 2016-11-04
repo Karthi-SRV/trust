@@ -40,6 +40,7 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin'),
     // The User's Dashboard.
      Route::get('/',         array('before' => 'auth', 'uses' => 'Dashboard@index'));
      Route::get('dashboard', array('before' => 'auth', 'uses' => 'Dashboard@index'));
+     Route::get('report', array('before' => 'auth', 'uses' => 'Report@index'));
 
     // // The User's Profile.
      Route::get( 'profile', array('before' => 'auth',      'uses' => 'Profile@index'));

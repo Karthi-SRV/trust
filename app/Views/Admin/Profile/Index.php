@@ -335,15 +335,22 @@
                     <div class="my-cart calc-shipping-sec">
                         <div class="cart-heading">
                         </div>
-                        <form action="#" class="form-horizontal" method='POST' role="form">
-                                <input name="group_account_id" id="group_account" type="hidden" class="form-control" value="" placeholder="<?= __d('users', 'Email'); ?>">
+                        <form action="javascript:void(0)" class="form-horizontal" method='POST' role="form">
+                                <input name="group_account_id" id="group_account" type="hidden" class="form-control" value="<?php echo $userGroupAccountId ; ?>" placeholder="<?= __d('users', 'Email'); ?>">
+                                <input name="username" id="username" type="text" class="form-control" value="" placeholder="Enter User Name" style="display: none;">
                                 <input name="email" id="email" type="email" class="form-control" value="" placeholder="<?= __d('users', 'Email'); ?>">
+                                <input name="password" id="passwordid" type="password" class="form-control" value="" placeholder="Enter Password" style="display: none;">
+                                <input name="password_confirmation" id="passwordIdConform" type="password" class="form-control" value="" placeholder="Enter Password Again" style="display: none;">
                                 <input type="submit" name="submit" id="add_new_user"class="btn btn-success col-sm-3 pull-right" value="<?= __d('users', 'Add New User'); ?>">
+                                <input type="button" name="cancel" id="cancelForm1"class="btn btn-danger col-sm-3 pull-right" value="Cancel" style="display: none;">
+                                <input type="button" name="conform" id="conformForm2"class="btn btn-success col-sm-3 pull-right" value="ConForm" style="display: none;">
+                                <input type="button" name="addNew" id="createAndAddUser"class="btn btn-success col-sm-3 pull-right" value="Add New User" style="display: none;">
                                 <!-- <a href="#" title="" id='addForm1Data' class="green">Add New User</a>
 
                                 <a title=""  class="processEnable green" style='background-color:#8AC756;color:#ffffff; margin-right:10px;background-image:none;border: 1px solid #8AC756;display:none;'>Processing..</a>
 
                                 <a href="#" title="" id='cancelForm1' class="gray" style='color:#ffffff; margin-right:10px;'>Cancel</a>
+                                <a href="#" title="" id='conformForm2' class="gray" style='color:#ffffff; margin-right:10px;'>conform</a>
  -->
                             <!-- </li> -->
                         </ul>
@@ -352,6 +359,11 @@
                 </fieldset>
 
             </div>
+
+
+    
+
+
         </div>
     </div>
 </div>
@@ -438,7 +450,7 @@
 </section>
 <?php 
 Assets::js([
-    template_url('js/profile12.js', 'AdminLte'),
+    template_url('js/profile.js', 'AdminLte'),
 ]);
 echo isset($js) ? $js : '';
 ?>
