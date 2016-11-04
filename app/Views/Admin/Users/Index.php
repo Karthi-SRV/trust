@@ -28,45 +28,45 @@
         </div>
     </div>
     <div class="box-body no-padding">
-<?php if (! $users->isEmpty()) { ?>
-        <table id='left' class='table table-striped table-hover responsive'>
-            <tr class="bg-navy disabled">
-                <th style='text-align: center; vertical-align: middle;'><?= __d('users', 'ID'); ?></th>
-                <th style='text-align: center; vertical-align: middle;'><?= __d('users', 'Username'); ?></th>
-                <th style='text-align: center; vertical-align: middle;'><?= __d('users', 'Role'); ?></th>
-                <th style='text-align: center; vertical-align: middle;'><?= __d('users', 'Name and Surname'); ?></th>
-                <th style='text-align: center; vertical-align: middle;'><?= __d('users', 'E-mail'); ?></th>
-                <th style='text-align: center; vertical-align: middle;'><?= __d('users', 'Created At'); ?></th>
-                <th style='text-align: right; vertical-align: middle;'><?= __d('users', 'Operations'); ?></th>
-            </tr>
-<?php
-    foreach ($users->getItems() as $user) {
-        echo "
-<tr>
-    <td style='text-align: center; vertical-align: middle;' width='5%'>" .$user->id ."</td>
-    <td style='text-align: center; vertical-align: middle;' width='18%'>" .$user->username ."</td>
-    <td style='text-align: center; vertical-align: middle;' width='11%'>" .$user->role->name ."</td>
-    <td style='text-align: center; vertical-align: middle;' width='18%'>" .$user->realname ."</td>
-    <td style='text-align: center; vertical-align: middle;' width='18%'>" .$user->email ."</td>
-    <td style='text-align: center; vertical-align: middle;' width='15%'>" .$user->created_at->formatLocalized('%d %b %Y, %R') ."</td>
-    <td style='text-align: right; vertical-align: middle;' width='15%'>
-        <div class='btn-group' role='group' aria-label='...'>
-            <a class='btn btn-sm btn-warning' href='" .site_url('admin/users/' .$user->id). "' title='". __d('users', 'Show the Details') ."' role='button'><i class='fa fa-search'></i></a>
-            <a class='btn btn-sm btn-success' href='" .site_url('admin/users/' .$user->id .'/edit') ."' title='" .__d('users', 'Edit this User') ."' role='button'><i class='fa fa-pencil'></i></a>
-            <a class='btn btn-sm btn-danger' href='#' data-toggle='modal' data-target='#confirm_" .$user->id ."' title='" .__d('users', 'Delete this User') ."' role='button'><i class='fa fa-remove'></i></a>
-        </div>
-    </td>
-</tr>";
+        <?php if (! $users->isEmpty()) { ?>
+            <table id='left' class='table table-striped table-hover responsive'>
+                <tr class="bg-navy disabled">
+                    <th style='text-align: center; vertical-align: middle;'><?= __d('users', 'ID'); ?></th>
+                    <th style='text-align: center; vertical-align: middle;'><?= __d('users', 'Username'); ?></th>
+                    <th style='text-align: center; vertical-align: middle;'><?= __d('users', 'Role'); ?></th>
+                    <th style='text-align: center; vertical-align: middle;'><?= __d('users', 'Name and Surname'); ?></th>
+                    <th style='text-align: center; vertical-align: middle;'><?= __d('users', 'E-mail'); ?></th>
+                    <th style='text-align: center; vertical-align: middle;'><?= __d('users', 'Created At'); ?></th>
+                    <th style='text-align: right; vertical-align: middle;'><?= __d('users', 'Operations'); ?></th>
+                </tr>
+                <?php
+                    foreach ($users->getItems() as $user) {
+                        echo "
+                        <tr>
+                            <td style='text-align: center; vertical-align: middle;' width='5%'>" .$user->id ."</td>
+                            <td style='text-align: center; vertical-align: middle;' width='18%'>" .$user->username ."</td>
+                            <td style='text-align: center; vertical-align: middle;' width='11%'>" .$user->role->name ."</td>
+                            <td style='text-align: center; vertical-align: middle;' width='18%'>" .$user->realname ."</td>
+                            <td style='text-align: center; vertical-align: middle;' width='18%'>" .$user->email ."</td>
+                            <td style='text-align: center; vertical-align: middle;' width='15%'>" .$user->created_at->formatLocalized('%d %b %Y, %R') ."</td>
+                            <td style='text-align: right; vertical-align: middle;' width='15%'>
+                                <div class='btn-group' role='group' aria-label='...'>
+                                    <a class='btn btn-sm btn-warning' href='" .site_url('admin/users/' .$user->id). "' title='". __d('users', 'Show the Details') ."' role='button'><i class='fa fa-search'></i></a>
+                                    <a class='btn btn-sm btn-success' href='" .site_url('admin/users/' .$user->id .'/edit') ."' title='" .__d('users', 'Edit this User') ."' role='button'><i class='fa fa-pencil'></i></a>
+                                    <a class='btn btn-sm btn-danger' href='#' data-toggle='modal' data-target='#confirm_" .$user->id ."' title='" .__d('users', 'Delete this User') ."' role='button'><i class='fa fa-remove'></i></a>
+                                </div>
+                            </td>
+                        </tr>";
 
-    }
-?>
-        </table>
-<?php } else { ?>
-        <div class="alert alert-warning" style="margin: 0 5px 5px;">
-            <h4><i class="icon fa fa-warning"></i> <?php echo strftime("%d %b %Y, %R", time()) ." - "; ?> <?= __d('users', 'No registered Users'); ?></h4>
-            <?= __d('users', 'There are no registered Users.'); ?>
-        </div>
-<?php } ?>
+                    }
+                ?>
+            </table>
+        <?php } else { ?>
+                <div class="alert alert-warning" style="margin: 0 5px 5px;">
+                    <h4><i class="icon fa fa-warning"></i> <?php echo strftime("%d %b %Y, %R", time()) ." - "; ?> <?= __d('users', 'No registered Users'); ?></h4>
+                    <?= __d('users', 'There are no registered Users.'); ?>
+                </div>
+        <?php } ?>
     </div>
 </div>
 
