@@ -61,4 +61,45 @@
     </div>
 </div>
 
+<div  class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title"><?= __d('system', 'Users'); ?></h3>
+    </div>
+
+    <div class="box-body">
+        <div class="col-md-6">
+            <div class="about-us">
+                <h3>EXISTING <i>USERS</i></h3>
+                <?php $count = 0;
+                    if (isset($groupData) && !empty($groupData)) {
+                        foreach ($groupData as $groupUsers) {
+                        // pr($groupUsers);exit;
+                                $count++;?>
+                                <p>
+                                    <strong><?php echo ucfirst($groupUsers->username); ?></strong><span>&nbsp;&nbsp;(<a href="mailto:<?php echo $groupUsers->email; ?>" target='_blank'><?php echo $groupUsers->email; ?></a>)</span>
+                                        <?php if ($groupUsers->admin) { ?>
+                                    <span class='is-admin-flag'>&nbsp;&nbsp;<i class='fa fa-check'></i>&nbsp;Admin</span>
+                                    <?php } ?>
+                                    <br>
+                                    <?php  //if ($isAdmin) { ?>
+                                    <button type="submit" class="btn btn-xs btn-black removeUserBtn" data-account-id="<?php echo $groupUsers->id; ?>">Remove this user</button>
+                                    <button type="submit" class="btn btn-xs <?php echo $groupUsers->admin? 'btn-danger':'btn-primary'; ?> makeAdmin" data-user-id="<?php echo $groupUsers->id; ?>" data-admin-id="<?php echo $groupUsers->admin; ?>" data-group-id="<?php echo $groupUsers->group_account_id; ?> " style="width:100px"><?php echo $groupUsers->admin? 'Remove Admin':'Make Admin'; ?></button>
+                                    <?php //}  ?>
+                                    <button type="submit" class="btn btn-xs btn-primary editUserBtn" data-user-id="<?php echo $groupUsers->id; ?>" data-group-id="<?php echo $groupUsers->group_account_id; ?>">Edit user</button>
+                                    <?php ?>
+                                </p>
+                                <br>
+                                <br>
+                                <?php
+                        }
+                        if($count == 0){?>
+                            <p><strong>There are no users connected to this account</strong></p>
+                        <?php }
+                    } else {
+                    ?>
+                    <p><strong>There are no users connected to this account</strong></p>
+                    <?php } ?>
+    </div>
+</div>
+
 </section>

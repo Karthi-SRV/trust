@@ -10,6 +10,8 @@ namespace App\Controllers\Admin;
 
 use App\Core\BackendController;
 use App\Models\User;
+use App\Models\Group_Account;
+use App\Models\GroupAccountToApprovedCustomerUser;
 
 use Auth;
 use Hash;
@@ -17,6 +19,7 @@ use Input;
 use Redirect;
 use Validator;
 use View;
+use DB;
 
 
 class Profile extends BackendController
@@ -62,9 +65,24 @@ class Profile extends BackendController
     {
         $user = Auth::user();
 
+        if($user->group_account_id) {
+            // $group_account = GroupAccountToApprovedCustomerUser::where('group_account_id','=', $user->group_account_id)->get();
+            $groupData =  DB::table('group_account_to_approved_customer_users')
+                ->join('users', 'group_account_to_approved_customer_users.customer_id', '=', 'users.id')
+                ->where('group_account_to_approved_customer_users.group_account_id','=',$user->group_account_id)
+                ->get();
+        } else {
+            $userGroupAccountId =  DB::table('group_account_to_approved_customer_users')
+                                    ->where('customer_id','=', $user->id)->pluck('group_account_id');
+            $groupData =  DB::table('group_account_to_approved_customer_users')
+                ->join('users', 'group_account_to_approved_customer_users.customer_id', '=', 'users.id')
+                ->where('group_account_to_approved_customer_users.group_account_id','=',$userGroupAccountId)
+                ->get();
+        }
         return $this->getView()
             ->shares('title',  __d('system', 'User Profile'))
-            ->with('user', $user);
+            ->with('user', $user)
+            ->with('groupData', $groupData);
     }
 
     public function update()
