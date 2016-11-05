@@ -33,8 +33,8 @@ This framework was designed and is **strongly recommended** to be installed abov
 Additionally, installing in a sub-directory, on a production server, will introduce severe security issues. If there is no choice still place the framework files above the document root and have only index.php and .htacess from the public folder in the sub folder and adjust the paths accordingly.
 
 ## Regular User Password : 
-User Name : jhon
-pass : jhon
+User Name : john
+pass : john
 Uses -> Reqular User ,Access to his profile,list of family members
 
 ## Admin
@@ -47,7 +47,7 @@ user : marcus
 pass : marcus
 uses -> form checking ,profile,user creation
 
-
+Please setup the virtual server to run this project properly
 
 Please locate the db file in Script folder
 
