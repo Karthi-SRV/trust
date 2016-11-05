@@ -222,7 +222,7 @@ $langMenuLinks = ob_get_clean();
       <?php } ?>
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; <?php echo date('Y'); ?> <a href="http://www.novaframework.com/" target="_blank"><b>Nova Framework <?= VERSION; ?></b></a> - </strong> All rights reserved.
+    <strong>Copyright &copy; <?php echo date('Y'); ?> <a href="http://www.pettacode.com/" target="_blank"><b>Pettacode </b></a> - </strong> All rights reserved.
   </footer>
 
 </div>
