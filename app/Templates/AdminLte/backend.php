@@ -105,13 +105,8 @@ $langMenuLinks = ob_get_clean();
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav" style="margin-right: 10px;">
-          <li class="dropdown language-menu">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <i class='fa fa-language'></i> <?= $langName; ?>
-            </a>
-            <ul class="dropdown-menu">
-              <?= $langMenuLinks; ?>
-            </ul>
+          <li>
+            <a href='<?=site_url();?>'>View Site</a>
           </li>
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
@@ -168,11 +163,31 @@ $langMenuLinks = ob_get_clean();
             <li <?php if ($baseUri == 'admin/dashboard') { echo "class='active'"; } ?>>
                 <a href="<?= site_url('admin/dashboard'); ?>"><i class="fa fa-dashboard"></i> <span><?= __d('admin_lte', 'Dashboard'); ?></span></a>
             </li>
+            
+            <?php if ($user->role_id != 1)
+             { 
+              ?>
+                <li <?php if ($baseUri == 'admin/family') { echo "class='active'"; } ?>>
+                <a href="<?= site_url('admin/family'); ?>"><i class="fa fa-gears"></i> <span><?= __d('admin_lte', 'Family'); ?></span></a>
+            </li>
+            <li <?php if ($baseUri == 'admin/profile') { echo "class='active'"; } ?>>
+                <a href="<?= site_url('admin/profile'); ?>"><i class="fa fa-users"></i> <span><?= __d('admin_lte', 'profile'); ?></span></a>
+            </li>
+            <li <?php if ($baseUri == 'admin/myprofile') { echo "class='active'"; } ?>>
+                <a href="<?= site_url('admin/myprofile'); ?>"><i class="fa fa-users"></i> <span><?= __d('admin_lte', 'My Profile'); ?></span></a>
+            </li>
+            <?php 
+          } 
+
+           ?>
 
             <?php if ($user->hasRole('administrator')) { ?>
-
+            
             <li <?php if ($baseUri == 'admin/settings') { echo "class='active'"; } ?>>
                 <a href="<?= site_url('admin/settings'); ?>"><i class="fa fa-gears"></i> <span><?= __d('admin_lte', 'Settings'); ?></span></a>
+            </li>
+            <li <?php if ($baseUri == 'admin/report') { echo "class='active'"; } ?>>
+                <a href="<?= site_url('admin/report'); ?>"><i class="fa fa-gears"></i> <span><?= __d('admin_lte', 'report'); ?></span></a>
             </li>
 
             <li <?php if ($baseUri == 'admin/users') { echo "class='active'"; } ?>>

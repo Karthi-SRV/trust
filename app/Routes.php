@@ -35,17 +35,22 @@ Route::group(array('prefix' => '', 'namespace' => 'App\Controllers'), function()
 
 // The Adminstration Routes.
 Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin'), function() {
+
+    //Route::get('family',   array('before' => 'auth', 'uses' => 'Family@index'));
     // The User's Dashboard.
-    Route::get('/',         array('before' => 'auth', 'uses' => 'Dashboard@index'));
-    Route::get('dashboard', array('before' => 'auth', 'uses' => 'Dashboard@index'));
+     Route::get('/',         array('before' => 'auth', 'uses' => 'Dashboard@index'));
+     Route::get('dashboard', array('before' => 'auth', 'uses' => 'Dashboard@index'));
+     Route::get('report', array('before' => 'auth', 'uses' => 'Report@index'));
 
-    // The User's Profile.
-    Route::get( 'profile', array('before' => 'auth',      'uses' => 'Profile@index'));
-    Route::post('profile', array('before' => 'auth|csrf', 'uses' => 'Profile@update'));
-
-    // The Site Settings.
-    Route::get( 'settings', array('before' => 'auth',      'uses' => 'Settings@index'));
-    Route::post('settings', array('before' => 'auth|csrf', 'uses' => 'Settings@store'));
+    // // The User's Profile.
+     Route::get( 'profile', array('before' => 'auth',      'uses' => 'Profile@index'));
+     Route::post('profile', array('before' => 'auth|csrf', 'uses' => 'Profile@update'));
+Route::post( 'profile/validateEmail', array('before' => 'auth',      'uses' => 'Profile@validateEmail'));     
+Route::post( 'profile/addUser', array('before' => 'auth',      'uses' => 'Profile@addUser'));     
+Route::post( 'profile/createAndAddUser', array('before' => 'auth',      'uses' => 'Profile@createAndAddUser'));
+    // // The Site Settings.      
+     Route::get( 'settings', array('before' => 'auth',      'uses' => 'Settings@index'));
+     Route::post('settings', array('before' => 'auth|csrf', 'uses' => 'Settings@store'));
 });
 
 
@@ -56,10 +61,19 @@ Route::group(array('prefix' => '', 'namespace' => 'App\Controllers'), function()
     Route::get( 'register/verify/{token?}', array('before' => 'guest',      'uses' => 'Registrar@verify'));
     Route::get( 'register/status',          array('before' => 'guest',      'uses' => 'Registrar@status'));
 });
+//family router setup
+Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin'), function() {
+    // The Account Registration.
+    Route::get('family', array('before' => 'auth',  'uses' => 'Family@index'));
+    Route::get('myprofile', array('before' => 'auth',  'uses' => 'My@index'));
+    
+});
+//Family Router
 
 // The Adminstration Routes.
 Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin'), function() {
     // The Users CRUD.
+    Route::get('forms/create',  array('before' => 'auth','uses' => 'Forms@create'));
     Route::get( 'users',              array('before' => 'auth',      'uses' => 'Users@index'));
     Route::get( 'users/create',       array('before' => 'auth',      'uses' => 'Users@create'));
     Route::post('users',              array('before' => 'auth|csrf', 'uses' => 'Users@store'));
@@ -68,6 +82,9 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin'),
     Route::post('users/{id}', 
             array('before' => 'auth|csrf', 'uses' => 'Users@update'));
     Route::post('users/{id}/destroy', array('before' => 'auth|csrf', 'uses' => 'Users@destroy'));
+
+    Route::get('forms/{id}',    array('before' => 'auth',      'uses' => 'Forms@show'));
+    Route::post('forms/{id}/destroy', array('before' => 'auth|csrf', 'uses' => 'Forms@destroy'));
 
     // The Users Search.
     Route::post( 'users/search', array('before' => 'auth', 'uses' => 'Users@search'));
@@ -95,7 +112,21 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'App\Modules\Files\Contro
 });
 
 // The default Routing
-Route::get('/',       'App\Controllers\Welcome@index');
-Route::get('subpage', 'App\Controllers\Welcome@subPage');
+Route::group(array('prefix' => '', 'namespace' => 'App\Controllers'), function() {
+    //index page
+    Route::get( '/',  array('before' => 'guest', 'uses' => 'Welcome@index'));
+    Route::get( 'about',  array('before' => 'guest', 'uses' => 'Welcome@subPage'));
+    Route::get( 'service',  array('before' => 'guest', 'uses' => 'Service@fetch'));
+    Route::get( 'contact',  array('before' => 'guest', 'uses' => 'Welcome@contact'));
+    Route::get( 'service/{code}',  array('before' => 'auth','uses' =>  'Service@fetchme'));
+});
+
+
+
+//Route::get('/',       'App\Controllers\Welcome@index');
+//Route::get('subpage', 'App\Controllers\Welcome@subPage');
+//Route::get('service', 'App\Controllers\Service@fetch');
+//Route::get('service/{code}', 'App\Controllers\Service@fetchme');
+
 
 /** End default Routes */
