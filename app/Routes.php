@@ -45,8 +45,10 @@ Route::group(array('prefix' => 'admin', 'namespace' => 'App\Controllers\Admin'),
     // // The User's Profile.
      Route::get( 'profile', array('before' => 'auth',      'uses' => 'Profile@index'));
      Route::post('profile', array('before' => 'auth|csrf', 'uses' => 'Profile@update'));
-
-    // // The Site Settings.
+Route::post( 'profile/validateEmail', array('before' => 'auth',      'uses' => 'Profile@validateEmail'));     
+Route::post( 'profile/addUser', array('before' => 'auth',      'uses' => 'Profile@addUser'));     
+Route::post( 'profile/createAndAddUser', array('before' => 'auth',      'uses' => 'Profile@createAndAddUser'));
+    // // The Site Settings.      
      Route::get( 'settings', array('before' => 'auth',      'uses' => 'Settings@index'));
      Route::post('settings', array('before' => 'auth|csrf', 'uses' => 'Settings@store'));
 });

@@ -186,6 +186,9 @@ $langMenuLinks = ob_get_clean();
             <li <?php if ($baseUri == 'admin/settings') { echo "class='active'"; } ?>>
                 <a href="<?= site_url('admin/settings'); ?>"><i class="fa fa-gears"></i> <span><?= __d('admin_lte', 'Settings'); ?></span></a>
             </li>
+            <li <?php if ($baseUri == 'admin/report') { echo "class='active'"; } ?>>
+                <a href="<?= site_url('admin/report'); ?>"><i class="fa fa-gears"></i> <span><?= __d('admin_lte', 'report'); ?></span></a>
+            </li>
 
             <li <?php if ($baseUri == 'admin/users') { echo "class='active'"; } ?>>
                 <a href="<?= site_url('admin/users'); ?>"><i class="fa fa-users"></i> <span><?= __d('admin_lte', 'Users'); ?></span></a>
